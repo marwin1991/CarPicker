@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico"/>
+
+    <title>Navbar Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<div class="container">
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h2> Credit risk </h2>
+        <form action="#" th:action="@{'/calculate'}" th:method="POST" th:object="${input}">
+            <div class="form-group blu-margin">
+                Credit value--------------<input type="number" id="creditAmountInput" name="creditAmountInput"
+                                                 th:value="*{creditAmount}"/> EUR
+            </div>
+
+            <div class="form-group blu-margin">
+                Credit duration(days)----<input type="number" id="durationInput" name="durationInput"
+                                                th:value="*{duration}"/> EUR
+            </div>
+
+            <div class="form-group blu-margin">
+                <select class="form-control" id="purposeDropDown">
+                    <option value="0">Select purpose</option>
+                    <option th:each="purpose : ${purposes}" th:value="${purpose}" th:text="${purpose}"></option>
+                </select>
+            </div>
+
+            <div class="form-group blu-margin">
+                <select class="form-control" id="ageDropDown">
+                    <option value="0">Select age</option>
+                    <option th:each="age : ${ages}" th:value="${age}" th:text="${age}"></option>
+                </select>
+            </div>
+
+            <div class="form-group blu-margin">
+                <select class="form-control" id="sexDropDown">
+                    <option value="0">Select sex</option>
+                    <option th:each="sex : ${sexs}" th:value="${sex}" th:text="${sex}"></option>
+                </select>
+            </div>
+
+            <div class="form-group blu-margin">
+                <select class="form-control" id="housingDropDown">
+                    <option value="0">Select housing</option>
+                    <option th:each="housing : ${housings}" th:value="${housing}" th:text="${housing}"></option>
+                </select>
+            </div>
+
+            <div class="form-group blu-margin">
+                <select class="form-control" id="jobDropDown">
+                    <option value="0">Select job</option>
+                    <option th:each="job : ${jobs}" th:value="${job}" th:text="${job}"></option>
+                </select>
+            </div>
+
+            <div class="form-group blu-margin">
+                What is your checking account's balance?<input type="number" id="checkingInput" name="checkingInput"
+                                                               th:value="*{checkingAccounts}"/> EUR
+            </div>
+
+            <div class="form-group blu-margin">
+                What is your savings account's balance ??<input type="number" id="savingInput" name="savingInput"
+                                                                th:value="*{savingAccounts}"/> EUR
+            </div>
+
+
+            <button type="submit" id="submitButton">Calculate Credit Risk</button>
+        </form>
+
+        <h2>
+            <span th:text="'Result ' + ${result}"></span>
+        </h2>
+    </div>
+</div> <!-- /container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+</html>
