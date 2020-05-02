@@ -1,4 +1,4 @@
-historical_data = []
+historical_data = [{"engine" : 50, "car_body":80, "costs":48, "car_details" : 72, "equipment":80, "driving-features": 68, "chosen_models" :{"VW Passat" : 4, "Skoda Superb":3, "VW Tiguan":3}}]
 
 
 def is_similar(value1, value2):
@@ -14,5 +14,5 @@ def get_all_similar_prediction(car_elements):
             if is_similar(element, historical_row.get(car_elements_as_string[index])):
                 similarity += 1
         if similarity > 3:
-            result.append(historical_row.get("chosen_model"))
+            result.append(historical_row.get("chosen_models"))
     return result

@@ -1,0 +1,11 @@
+50,80,30,72,80,68,VW Passat
+40,60,40,65,58,VW Polo
+45,70,35,72,70,75,VW Golf
+55,85,25,85,80,50,VW Touareg
+45,65,30,77,75,45,VW Tiguan
+40,50,35,70,70,45,VW T-ROC
+47,84,45,70,80,67,Skoda Superb
+45,78,50,70,72,71,Skoda Octavia
+40,70,60,60,58,64,Skoda Scala
+50,87,32,75,77,47,Skoda Kodiaq
+48,75,38,70,70,42,Skoda Karoq

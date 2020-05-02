@@ -11,6 +11,41 @@ def normalize(value):
     return value
 
 
+def get_cars():
+    training_rows = []
+    # ["engine", "car_body", "costs", "car_details", "equipment", "driving_feature"]
+    training_rows.append([50, 80, 30, 72, 80, 68, "VW Passat"])
+    training_rows.append([40, 60, 40, 65, 58, "VW Polo"])
+    training_rows.append([45, 70, 35, 72, 70, 75, "VW Golf"])
+    training_rows.append([55, 85, 25, 85, 80, 50, "VW Touareg"])
+    training_rows.append([45, 65, 30, 77, 75, 45, "VW Tiguan"])
+    training_rows.append([40, 50, 35, 70, 70, 45, "VW T-ROC"])
+
+    training_rows.append([47, 84, 45, 70, 80, 67, "Skoda Superb"])
+    training_rows.append([45, 78, 50, 70, 72, 71, "Skoda Octavia"])
+    training_rows.append([40, 70, 60, 60, 58, 64, "Skoda Scala"])
+    training_rows.append([50, 87, 32, 75, 77, 47, "Skoda Kodiaq"])
+    training_rows.append([48, 75, 38, 70, 70, 42, "Skoda Karoq"])
+
+    training_rows.append([57, 70, 25, 83, 74, 72, "Audi A4"])
+    training_rows.append([58, 60, 22, 87, 74, 73, "Audi A5"])
+    training_rows.append([60, 81, 22, 89, 80, 75, "Audi A6"])
+    training_rows.append([61, 72, 21, 90, 80, 77, "Audi A7"])
+    training_rows.append([61, 90, 15, 92, 91, 68, "Audi A8"])
+    training_rows.append([60, 85, 17, 90, 90, 58, "Audi Q7"])
+    training_rows.append([57, 75, 21, 81, 83, 60, "Audi Q5"])
+    training_rows.append([53, 65, 27, 79, 80, 65, "Audi Q3"])
+
+    #training_rows.append([, "Opel Corsa"])
+    #training_rows.append([, "Opel Astra"])
+    #training_rows.append([, "Opel Corsa"])
+    #training_rows.append([, "Opel Corsa"])
+    #training_rows.append([, "Opel Corsa"])
+
+
+    return training_rows
+
+
 def generate_engine(N, attributes_count):
     training_rows = []
     for _ in range(N):
@@ -141,5 +176,6 @@ if __name__ == "__main__":
     save_file(car_details, "car_details.txt")
     save_file(equipment, "equipment.txt")
     save_file(driving_feature, "driving_feature.txt")
+    save_file(get_cars(), "cars.txt")
 
     predict(engine)
