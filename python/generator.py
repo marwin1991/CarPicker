@@ -36,11 +36,95 @@ def get_cars():
     training_rows.append([57, 75, 21, 81, 83, 60, "Audi Q5"])
     training_rows.append([53, 65, 27, 79, 80, 65, "Audi Q3"])
 
-    #training_rows.append([, "Opel Corsa"])
-    #training_rows.append([, "Opel Astra"])
-    #training_rows.append([, "Opel Corsa"])
-    #training_rows.append([, "Opel Corsa"])
-    #training_rows.append([, "Opel Corsa"])
+    training_rows.append([, "Opel Corsa"])
+    training_rows.append([, "Opel Astra"])
+    training_rows.append([, "Opel Insignia"])
+    training_rows.append([, "Opel Crossland"])
+    training_rows.append([, "Opel Grossland"])
+
+    training_rows.append([, "Fiat 500"])
+    training_rows.append([, "Fiat 500X"])
+    training_rows.append([, "Fiat 500L"])
+    training_rows.append([, "Fiat Tipo"])
+
+    training_rows.append([, "Mazda 2"])
+    training_rows.append([, "Mazda 3"])
+    training_rows.append([, "Mazda 6"])
+    training_rows.append([, "Mazda CX-3"])
+    training_rows.append([, "Mazda CX-5"])
+
+    training_rows.append([, "Toyota Auris"])
+    training_rows.append([, "Toyota Corolla"])
+    training_rows.append([, "Toyota Prius"])
+    training_rows.append([, "Toyota CH-R"])
+    training_rows.append([, "Mazda CX-5"])
+
+    training_rows.append([, "Peugeot 208"])
+    training_rows.append([, "Peugeot 308"])
+    training_rows.append([, "Peugeot 508"])
+    training_rows.append([, "Peugeot 3008"])
+    training_rows.append([, "Peugeot 5008"])
+
+    training_rows.append([, "Ford Fiesta"])
+    training_rows.append([, "Ford Focus"])
+    training_rows.append([, "Ford Mondeo"])
+    training_rows.append([, "Ford Kuga"])
+    training_rows.append([, "Ford C-Max"])
+
+    training_rows.append([, "Renault Clio"])
+    training_rows.append([, "Renault Megane"])
+    training_rows.append([, "Renault Captur"])
+    training_rows.append([, "Renault Koleos"])
+
+    training_rows.append([, "BMW 1"])
+    training_rows.append([, "BMW 3"])
+    training_rows.append([, "BMW 5"])
+    training_rows.append([, "BMW 7"])
+    training_rows.append([, "BMW X1"])
+    training_rows.append([, "BMW X3"])
+    training_rows.append([, "BMW X4"])
+    training_rows.append([, "BMW X5"])
+    training_rows.append([, "BMW X6"])
+
+    training_rows.append([, "Nissan Juke"])
+    training_rows.append([, "Nissan Micra"])
+    training_rows.append([, "Nissan Qashqai"])
+    training_rows.append([, "Nissan 370Z"])
+
+    training_rows.append([, "Hyundai i10"])
+    training_rows.append([, "Hyundai i20"])
+    training_rows.append([, "Hyundai i30"])
+    training_rows.append([, "Hyundai Kona"])
+    training_rows.append([, "Hyundai Tucson"])
+    training_rows.append([, "Hyundai Santa Fe"])
+
+    training_rows.append([, "Kia Rio"])
+    training_rows.append([, "Kia Ceed"])
+    training_rows.append([, "Kia Optima"])
+    training_rows.append([, "Kia Sportage"])
+    training_rows.append([, "Kia Sorento"])
+
+    training_rows.append([, "Lexus UX"])
+    training_rows.append([, "Lexus NX"])
+    training_rows.append([, "Lexus RX"])
+    training_rows.append([, "Lexus CT"])
+    training_rows.append([, "Lexus IS"])
+    training_rows.append([, "Lexus ES"])
+    training_rows.append([, "Lexus LS"])
+    training_rows.append([, "Lexus RC"])
+
+    training_rows.append([, "Tesla X"])
+    training_rows.append([, "Tesla S"])
+    training_rows.append([, "Tesla 3"])
+
+    training_rows.append([, "Volvo XC90"])
+    training_rows.append([, "Volvo XC60"])
+    training_rows.append([, "Volvo S90"])
+    training_rows.append([, "Volvo S60"])
+
+
+
+
 
 
     return training_rows
@@ -124,8 +208,9 @@ def generate_driving_features(N, attributes_count):
         breaking = random.randint(0, 10)
         driving_modes = random.randint(driving - 2, 10)
         driving_modes = normalize(driving_modes)
-        score = (driving + breaking + driving_modes) * 100 / (attributes_count * 10) + random.randint(-1, 1)
-        training_rows.append([driving, breaking, driving_modes, int(score)])
+        gearbox = random.randint(0, 10)
+        score = (driving + breaking + driving_modes + gearbox) * 100 / (attributes_count * 10) + random.randint(-1, 1)
+        training_rows.append([driving, breaking, driving_modes, gearbox, int(score)])
     return training_rows
 
 
@@ -169,7 +254,7 @@ if __name__ == "__main__":
     costs = generate_costs(100, 3)
     car_details = generate_car_details(100, 3)
     equipment = generate_equipment(100, 3)
-    driving_feature = generate_driving_features(100, 3)
+    driving_feature = generate_driving_features(100, 4)
     save_file(engine, "engine.txt")
     save_file(car_body, "car_body.txt")
     save_file(costs, "costs.txt")
