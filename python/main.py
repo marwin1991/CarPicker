@@ -1,12 +1,16 @@
 from sklearn import preprocessing
 from sklearn.ensemble import VotingClassifier
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 
 from python.generator import generate_engine, generate_car_body, generate_costs, generate_car_details, \
     generate_equipment, generate_driving_features, get_cars
-import numpy as np
+
 
 from sklearn.linear_model import LogisticRegression
+
+MAIN_CAR_FEATURES_AMMOUNT = 6
 
 
 def generate_training_datasets():
@@ -32,21 +36,40 @@ def predict(arguments, training_data):
     print(X_train)
     print(y_train)
     X_train = preprocessing.normalize(X_train)
-    print("Tutaj")
     model.fit(X_train, y_train)
     return model.predict([arguments])
 
 
-def predict_car(arguments, training_data):
+def predict_car(classifier, arguments, training_data):
     X_train = []
     y_train = []
     for data in training_data:
         X_train.append(data[:-1])
         y_train.append(data[-1])
-    from sklearn.neighbors import KNeighborsClassifier
-    neigh = KNeighborsClassifier(n_neighbors=5)
-    neigh.fit(X_train, y_train)
-    return neigh.predict([arguments])
+    classifier.fit(X_train, y_train)
+    return classifier.predict([arguments])
+
+def get_cars_predicted_by_classifier(classifier):
+    predicted_cars = {}
+    for i in range(MAIN_CAR_FEATURES_AMMOUNT):
+        for j in range(-10, 10, 5):
+            observation_copy = observation.copy()
+            observation_copy[i] = observation_copy[i] + j
+            car = predict_car(classifier, observation_copy, training_data[6])[0]
+            if car in predicted_cars.keys():
+                predicted_cars[car] +=1
+            else:
+                predicted_cars[car] = 1
+    return predicted_cars
+
+
+def merge_dicts(car_dicts):
+    result_car_dict = {}
+    for car_dict in car_dicts:
+        result_car_dict.update(car_dict)
+    return result_car_dict
+
+
 
 
 def parse_arguments(arguments):
@@ -70,9 +93,17 @@ if __name__ == '__main__':
     # print(predicted_equipment)
     # print(predicted_driving_features)
 
+    classifiers = [
+        KNeighborsClassifier(3),
+        SVC(kernel="linear", C=0.025),
+        SVC(gamma=2, C=1),
+        DecisionTreeClassifier(max_depth=5),
+    ]
+
     observation = [40, 50, 35, 70, 70, 45]
-    for i in range(6):
-        for j in range(-10,10):
-            observation_copy = observation.copy()
-            observation_copy[i] = observation_copy[i] + j
-            print(predict_car(observation_copy, training_data[6]))
+
+    predicted_cars_dicts = []
+    for classifier in classifiers:
+        predicted_cars_dicts.append(get_cars_predicted_by_classifier(classifier))
+
+    print(sorted(merge_dicts(predicted_cars_dicts).items(), key= lambda item : item[1], reverse=True))

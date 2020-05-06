@@ -35,17 +35,21 @@ def get_cars():
     training_rows.append([60, 85, 17, 90, 90, 58, "Audi Q7"])
     training_rows.append([57, 75, 21, 81, 83, 60, "Audi Q5"])
     training_rows.append([53, 65, 27, 79, 80, 65, "Audi Q3"])
-    """
-    training_rows.append([, "Opel Corsa"])
-    training_rows.append([, "Opel Astra"])
-    training_rows.append([, "Opel Insignia"])
-    training_rows.append([, "Opel Crossland"])
-    training_rows.append([, "Opel Grossland"])
 
-    training_rows.append([, "Fiat 500"])
-    training_rows.append([, "Fiat 500X"])
-    training_rows.append([, "Fiat 500L"])
-    training_rows.append([, "Fiat Tipo"])
+    training_rows.append([50, 54, 50, 47, 54, 48, "Opel Corsa"])
+    training_rows.append([55, 60, 47, 59, 49, 47, "Opel Astra"])
+    training_rows.append([60, 72, 38, 61, 62, 55, "Opel Insignia"])
+    training_rows.append([55, 70, 42, 60, 62, 45, "Opel Crossland"])
+    training_rows.append([65, 71, 37, 68, 65, 40, "Opel Grossland"])
+
+    training_rows.append([45, 47, 60, 45, 50, 55, "Fiat 500"])
+    training_rows.append([55, 58, 50, 50, 57, 47, "Fiat 500X"])
+    training_rows.append([55, 72, 45, 51, 58, 45, "Fiat 500L"])
+    training_rows.append([47, 60, 50, 47, 58, 60, "Fiat Tipo"])
+
+    # ["engine", "car_body", "costs", "car_details", "equipment", "driving_feature"]
+
+    """
 
     training_rows.append([, "Mazda 2"])
     training_rows.append([, "Mazda 3"])
@@ -251,12 +255,12 @@ if __name__ == "__main__":
     car_details = generate_car_details(100, 3)
     equipment = generate_equipment(100, 3)
     driving_features = generate_driving_features(100, 4)
-    #save_file(engine, "engine.txt")
-    #save_file(car_body, "car_body.txt")
-    #save_file(costs, "costs.txt")
-    #save_file(car_details, "car_details.txt")
-    #save_file(equipment, "equipment.txt")
-    #save_file(driving_features, "driving_feature.txt")
-    #save_file(get_cars(), "cars.txt")
+    # save_file(engine, "engine.txt")
+    # save_file(car_body, "car_body.txt")
+    # save_file(costs, "costs.txt")
+    # save_file(car_details, "car_details.txt")
+    # save_file(equipment, "equipment.txt")
+    # save_file(driving_features, "driving_feature.txt")
+    # save_file(get_cars(), "cars.txt")
 
     predict(engine)
