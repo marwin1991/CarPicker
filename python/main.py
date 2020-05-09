@@ -6,7 +6,7 @@ from sklearn.svm import SVC
 
 from python.generator import generate_engine, generate_car_body, generate_costs, generate_car_details, \
     generate_equipment, generate_driving_features, get_cars
-
+from python.historical_data import get_all_similar_predictions
 
 from sklearn.linear_model import LogisticRegression
 
@@ -49,7 +49,7 @@ def predict_car(classifier, arguments, training_data):
     classifier.fit(X_train, y_train)
     return classifier.predict([arguments])
 
-def get_cars_predicted_by_classifier(classifier):
+def get_cars_predicted_by_classifier(classifier, observation):
     predicted_cars = {}
     for i in range(MAIN_CAR_FEATURES_AMMOUNT):
         for j in range(-10, 10, 5):
@@ -86,6 +86,8 @@ if __name__ == '__main__':
     predicted_car_details = predict(arguments.get("car_details"), training_data[3])
     predicted_equipment = predict(arguments.get("equipment"), training_data[4])
     predicted_driving_features = predict(arguments.get("driving_features"), training_data[5])
+    car_elements_list = [predicted_engine, predicted_car_body, predicted_costs, predicted_car_details,
+                         predicted_equipment, predicted_driving_features]
     # print(predicted_engine)
     # print(predicted_car_body)
     # print(predicted_costs)
@@ -100,10 +102,11 @@ if __name__ == '__main__':
         DecisionTreeClassifier(max_depth=5),
     ]
 
-    observation = [40, 50, 35, 70, 70, 45]
+    observation = [50, 80, 48, 72, 70, 45]
 
     predicted_cars_dicts = []
     for classifier in classifiers:
-        predicted_cars_dicts.append(get_cars_predicted_by_classifier(classifier))
+        predicted_cars_dicts.append(get_cars_predicted_by_classifier(classifier, observation))
 
     print(sorted(merge_dicts(predicted_cars_dicts).items(), key= lambda item : item[1], reverse=True))
+    print(get_all_similar_predictions(observation))
