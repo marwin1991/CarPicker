@@ -199,6 +199,36 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                <label for="price" class="col-sm-3 col-form-label">Estimated price: </label>
+                <div class="input-group col-sm-7">
+                    <input type="number" id="price" name="price" th:value="*{price}"/>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">PLN</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="priceDef" class="col-sm-3 col-form-label">Expected price after 2 years: </label>
+                <div class="input-group col-sm-7">
+                    <input type="number" id="priceDef" name="priceDef" th:value="*{priceDef}"/>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">PLN</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="additionalCosts" class="col-sm-3 col-form-label">Additional costs: </label>
+                <div class="input-group col-sm-7">
+                    <input type="number" id="additionalCosts" name="additionalCosts" th:value="*{additionalCosts}"/>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">PLN/Year</div>
+                    </div>
+                </div>
+            </div>
+
 
 
             <button type="submit" id="submitButton">Find!</button>

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 
 @Setter
 @Getter
@@ -26,6 +28,10 @@ public class Input {
     private int comfortAdditionalEquipment;
     private int safetyAdditionalEquipment;
     private int otherAdditionalEquipment;
+
+    private BigDecimal price = BigDecimal.valueOf(100000L);
+    private BigDecimal priceDef = BigDecimal.valueOf(80000L);
+    private BigDecimal additionalCosts = BigDecimal.valueOf(5000);
 
 
     private String job;
