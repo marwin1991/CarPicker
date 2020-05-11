@@ -160,6 +160,47 @@
             </div>
 
 
+            <div class="form-group row">
+                <label for="comfortAdditionalEquipment" class="col-sm-3 col-form-label">Comfort additional equipment: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="comfortAdditionalEquipment" name="comfortAdditionalEquipment" th:value="*{comfortAdditionalEquipment}">
+                        <option value="1">None</option>
+                        <option value="3">Small</option>
+                        <option value="5" selected>Standard</option>
+                        <option value="7">Large</option>
+                        <option value="10">Exclusive</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="safetyAdditionalEquipment" class="col-sm-3 col-form-label">Safety additional equipment: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="safetyAdditionalEquipment" name="safetyAdditionalEquipment" th:value="*{safetyAdditionalEquipment}">
+                        <option value="1">None</option>
+                        <option value="3">Small</option>
+                        <option value="5" selected>Standard</option>
+                        <option value="7">Large</option>
+                        <option value="10">Super safety</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="otherAdditionalEquipment" class="col-sm-3 col-form-label">Other additional equipment: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="otherAdditionalEquipment" name="otherAdditionalEquipment" th:value="*{otherAdditionalEquipment}">
+                        <option value="1">None</option>
+                        <option value="3">Small</option>
+                        <option value="5" selected>Standard</option>
+                        <option value="7">Large</option>
+                        <option value="10">Exclusive</option>
+                    </select>
+                </div>
+            </div>
+
+
+
             <button type="submit" id="submitButton">Find!</button>
         </form>
 

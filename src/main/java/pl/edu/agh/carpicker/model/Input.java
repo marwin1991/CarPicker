@@ -23,6 +23,11 @@ public class Input {
     private int trunkSpace; // l
     private int comfort = 5; // in scale from 1 to 10
 
+    private int comfortAdditionalEquipment;
+    private int safetyAdditionalEquipment;
+    private int otherAdditionalEquipment;
+
+
     private String job;
     private String savingAccounts;
     private String checkingAccounts;

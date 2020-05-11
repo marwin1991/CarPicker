@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a270a877-89d5-430e-adc7-d55d12e88387" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarPicker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/model/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/model/Input.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
@@ -44,14 +40,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="320" />
-          <entry key="java" value="270" />
+          <entry key="html" value="465" />
+          <entry key="java" value="323" />
+          <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="320" />
-          <entry key="JAVA" value="270" />
+          <entry key="HTML" value="465" />
+          <entry key="JAVA" value="323" />
+          <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
     </session>
@@ -82,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/model/Input.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4">
-              <caret column="35" lean-forward="true" selection-start-column="35" selection-end-column="35" />
+            <state relative-caret-position="172">
+              <caret line="27" column="40" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -91,8 +89,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2409">
-              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+            <state relative-caret-position="53">
+              <caret line="191" column="126" selection-start-line="191" selection-start-column="126" selection-end-line="191" selection-end-column="126" />
             </state>
           </provider>
         </entry>
@@ -120,8 +118,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/model/Input.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/model/Input.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
       </list>
     </option>
@@ -229,7 +227,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589225570311" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589227222333" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -405,19 +403,20 @@
       <workItem from="1588439856593" duration="999000" />
       <workItem from="1588624964992" duration="1498000" />
       <workItem from="1588626962708" duration="633000" />
-      <workItem from="1589219763539" duration="5490000" />
+      <workItem from="1589219763539" duration="6563000" />
     </task>
-    <task id="LOCAL-00001" summary="Created project with simple forms">
-      <created>1588103126469</created>
+    <task id="LOCAL-00001" summary="Forms">
+      <created>1589225618936</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1588103126469</updated>
+      <updated>1589225618936</updated>
     </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8302000" />
+    <option name="totallyTimeSpent" value="9375000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -508,6 +507,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Forms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Forms" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="424" y="10" key="CommitChangelistDialog2" timestamp="1588166490957">
       <screen x="0" y="0" width="1536" height="824" />
@@ -539,13 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/model/Input.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret column="35" lean-forward="true" selection-start-column="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -556,10 +552,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/agh/carpicker/model/Input.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="27" column="40" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2409">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+        <state relative-caret-position="53">
+          <caret line="191" column="126" selection-start-line="191" selection-start-column="126" selection-end-line="191" selection-end-column="126" />
         </state>
       </provider>
     </entry>
