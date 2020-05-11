@@ -11,9 +11,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Input {
-    private int age;
-    private String sex;
-    private String housing;
+
+    private int enginePower; //KM
+    private double fuelUsage; //l/100km
+    private double acceleration; //0-100km in how much seconds
+    private int maxSpeed; //km/h
+    private int engineReliability = 5; // in scale from 1 to 10
+
+    private int carFrontSpace; //1-10
+    private int carBackSpace;// 1-10
+    private int trunkSpace; // l
+    private int comfort = 5; // in scale from 1 to 10
 
     private String job;
     private String savingAccounts;

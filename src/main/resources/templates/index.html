@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico"/>
 
-    <title>Navbar Template for Bootstrap</title>
+    <title>Car Picker Advisor</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
@@ -18,70 +18,154 @@
 <div class="container">
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h2> Credit risk </h2>
+        <h2> Car Picker </h2>
         <form action="#" th:action="@{'/calculate'}" th:method="POST" th:object="${input}">
-            <div class="form-group blu-margin">
-                Credit value--------------<input type="number" id="creditAmountInput" name="creditAmountInput"
-                                                 th:value="*{creditAmount}"/> EUR
+
+            <div class="form-group row">
+                <label for="enginePower" class="col-sm-2 col-form-label">Engine Power: </label>
+                <div class="input-group col-sm-10">
+                    <input type="number" id="enginePower" name="enginePower" th:value="*{enginePower}"/>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">hp</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group blu-margin">
-                Credit duration(days)----<input type="number" id="durationInput" name="durationInput"
-                                                th:value="*{duration}"/> EUR
+            <div class="form-group row">
+                <label for="fuelUsage" class="col-sm-2 col-form-label">Fuel usage: </label>
+                <div class="input-group col-sm-10">
+                    <input type="number" id="fuelUsage" name="fuelUsage" th:value="*{fuelUsage}"/>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">l/100km</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group blu-margin">
-                <select class="form-control" id="purposeDropDown">
-                    <option value="0">Select purpose</option>
-                    <option th:each="purpose : ${purposes}" th:value="${purpose}" th:text="${purpose}"></option>
-                </select>
+            <div class="form-group row">
+                <label for="maxSpeed" class="col-sm-2 col-form-label">Maximum speed: </label>
+                <div class="input-group col-sm-10">
+                    <input type="number" id="maxSpeed" name="fuelUsage" th:value="*{maxSpeed}"/>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">km/h</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group blu-margin">
-                <select class="form-control" id="ageDropDown">
-                    <option value="0">Select age</option>
-                    <option th:each="age : ${ages}" th:value="${age}" th:text="${age}"></option>
-                </select>
+            <div class="form-group">
+                <label for="engineReliability">Engine Reliability [Don't care - Normal - Reliable]</label>
+                <input type="range" class="custom-range" value="5" min="0" max="10" step="1" id="engineReliability" name="engineReliability" th:value="*{engineReliability}">
             </div>
 
-            <div class="form-group blu-margin">
-                <select class="form-control" id="sexDropDown">
-                    <option value="0">Select sex</option>
-                    <option th:each="sex : ${sexs}" th:value="${sex}" th:text="${sex}"></option>
-                </select>
+            <div class="form-group row">
+                <label for="maxSpeed" class="col-sm-2 col-form-label">Car's front space: </label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio1" value="1" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio1">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio2" value="2" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio2">2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio3" value="3" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio3">3</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio4" value="4" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio3">4</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio5" value="5" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio3">5</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio6" value="6" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio3">6</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio7" value="7" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio3">7</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio8" value="8" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio3">8</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio9" value="9" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio3">9</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carFrontSpaceRadio10" value="10" th:field="*{carFrontSpace}">
+                    <label class="form-check-label" for="carFrontSpaceRadio3">10</label>
+                </div>
             </div>
 
-            <div class="form-group blu-margin">
-                <select class="form-control" id="housingDropDown">
-                    <option value="0">Select housing</option>
-                    <option th:each="housing : ${housings}" th:value="${housing}" th:text="${housing}"></option>
-                </select>
+            <div class="form-group row">
+                <label for="maxSpeed" class="col-sm-2 col-form-label">Car's back space: </label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio1" value="1" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio1">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio2" value="2" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio2">2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio3" value="3" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio3">3</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio4" value="4" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio3">4</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio5" value="5" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio3">5</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio6" value="6" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio3">6</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio7" value="7" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio3">7</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio8" value="8" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio3">8</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio9" value="9" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio3">9</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="carBackSpaceRadio10" value="10" th:field="*{carBackSpace}">
+                    <label class="form-check-label" for="carBackSpaceRadio3">10</label>
+                </div>
             </div>
 
-            <div class="form-group blu-margin">
-                <select class="form-control" id="jobDropDown">
-                    <option value="0">Select job</option>
-                    <option th:each="job : ${jobs}" th:value="${job}" th:text="${job}"></option>
-                </select>
+            <div class="form-group row">
+                <label for="trunkSpace" class="col-sm-2 col-form-label">Trunk space: </label>
+                <div class="input-group col-sm-10">
+                    <input type="number" id="trunkSpace" name="trunkSpace" th:value="*{trunkSpace}"/>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">liters</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group blu-margin">
-                What is your checking account's balance?<input type="number" id="checkingInput" name="checkingInput"
-                                                               th:value="*{checkingAccounts}"/> EUR
-            </div>
-
-            <div class="form-group blu-margin">
-                What is your savings account's balance ??<input type="number" id="savingInput" name="savingInput"
-                                                                th:value="*{savingAccounts}"/> EUR
+            <div class="form-group">
+                <label for="comfort">Comfort [Don't care - Normal - Luxury]</label>
+                <input type="range" class="custom-range" value="5" min="0" max="10" step="1" id="comfort" name="comfort" th:value="*{comfort}">
             </div>
 
 
-            <button type="submit" id="submitButton">Calculate Credit Risk</button>
+            <button type="submit" id="submitButton">Find!</button>
         </form>
 
-        <h2>
-            <span th:text="'Result ' + ${result}"></span>
-        </h2>
+        <!--<h2>-->
+            <!--<span th:text="'Result ' + ${result}"></span>-->
+        <!--</h2>-->
     </div>
 </div> <!-- /container -->
 <!-- Bootstrap core JavaScript
