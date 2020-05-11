@@ -34,11 +34,7 @@ public class Input {
     private BigDecimal additionalCosts = BigDecimal.valueOf(5000);
 
 
-    private String job;
-    private String savingAccounts;
-    private String checkingAccounts;
-
-    private int creditAmount;
-    private int duration;
-    private String purpose;
+    private int drivingExpQuality; //1-10
+    private int breaksQuality;// 1-10
+    private int transmission; //1-Manual, 5-All, 10-Auto
 }
