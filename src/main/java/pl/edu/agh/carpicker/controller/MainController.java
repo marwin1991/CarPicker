@@ -32,11 +32,6 @@ public class MainController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("input", new Input());
-        model.addAttribute("ages", IntStream.range(0, 100).boxed().collect(Collectors.toList()));
-        model.addAttribute("sexs", Arrays.asList("female", "male"));
-        model.addAttribute("housings", Arrays.asList("own", "rent", "free"));
-        model.addAttribute("jobs", Arrays.asList("todo", "todo", "todo"));
-        model.addAttribute("purposes", Arrays.asList("todo", "todo", "todo"));
         return "index";
     }
 
