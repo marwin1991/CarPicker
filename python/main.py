@@ -51,7 +51,8 @@ def predict_car(classifier, arguments, training_data):
     classifier.fit(X_train, y_train)
     return classifier.predict([arguments])
 
-def get_cars_predicted_by_classifier(classifier, observation):
+
+def get_cars_predicted_by_classifier(classifier, observation, training_data):
     predicted_cars = {}
     for i in range(MAIN_CAR_FEATURES_AMMOUNT):
         for j in range(-10, 10, 5):
@@ -59,7 +60,7 @@ def get_cars_predicted_by_classifier(classifier, observation):
             observation_copy[i] = observation_copy[i] + j
             car = predict_car(classifier, observation_copy, training_data[6])[0]
             if car in predicted_cars.keys():
-                predicted_cars[car] +=1
+                predicted_cars[car] += 1
             else:
                 predicted_cars[car] = 1
     return predicted_cars
@@ -72,15 +73,18 @@ def merge_dicts(car_dicts):
     return result_car_dict
 
 
-
-
-def parse_arguments(arguments):
-    return arguments
-
-
-if __name__ == '__main__':
-    arguments = {"engine": [10, 8, 5, 4, 3], "car_body": [5, 7, 8, 4], "costs": [5, 5, 2],
-                 "car_details": [7, 8, 5], "equipment": [5, 8, 2], "driving_features": [5, 7, 4, 7]}
+def main(engine_power, fuel_consumption, acceleration, max_speed, durability,
+         space_front, space_back, trunk, comfort,
+         quality_finish, quality_mute, ease_of_use,
+         comfort_equipment, security_equipment, extra_equipment,
+         price, price_loss, extra_costs,
+         driving, breaking, driving_modes, gearbox):
+    arguments = {"engine": [engine_power, fuel_consumption, acceleration, max_speed, durability],
+                 "car_body": [space_front, space_back, trunk, comfort],
+                 "costs": [price, price_loss, extra_costs],
+                 "car_details": [quality_finish, quality_mute, ease_of_use],
+                 "equipment": [comfort_equipment, security_equipment, extra_equipment],
+                 "driving_features": [driving, breaking, driving_modes, gearbox]}
     training_data = generate_training_datasets()
     predicted_engine = predict(arguments.get("engine"), training_data[0])
     predicted_car_body = predict(arguments.get("car_body"), training_data[1])
@@ -88,8 +92,9 @@ if __name__ == '__main__':
     predicted_car_details = predict(arguments.get("car_details"), training_data[3])
     predicted_equipment = predict(arguments.get("equipment"), training_data[4])
     predicted_driving_features = predict(arguments.get("driving_features"), training_data[5])
-    car_elements_list = [predicted_engine, predicted_car_body, predicted_costs, predicted_car_details,
-                         predicted_equipment, predicted_driving_features]
+    car_elements_list = [predicted_engine[0], predicted_car_body[0], predicted_costs[0], predicted_car_details[0],
+                         predicted_equipment[0], predicted_driving_features[0]]
+    print(car_elements_list)
 
     classifiers = [
         KNeighborsClassifier(3),
@@ -100,16 +105,19 @@ if __name__ == '__main__':
     ]
 
     observation = [50, 80, 48, 72, 70, 45]
-    #observation = car_elements_list
+    observation = car_elements_list
 
     predicted_cars_dicts = []
     for classifier in classifiers:
-        predicted_cars_dicts.append(get_cars_predicted_by_classifier(classifier, observation))
+        predicted_cars_dicts.append(get_cars_predicted_by_classifier(classifier, observation, training_data))
 
     predicted_cars = dict(merge_dicts(predicted_cars_dicts))
     recommended_cars_by_historical_data = dict(get_all_similar_predictions(observation))
     print(predicted_cars)
     print(recommended_cars_by_historical_data)
     predicted_cars.update(recommended_cars_by_historical_data)
-    print(dict(sorted(predicted_cars.items(), key=lambda item : item[1], reverse=True)))
+    return dict(sorted(predicted_cars.items(), key=lambda item: item[1], reverse=True))
 
+
+if __name__ == '__main__':
+    print(main(10, 7, 9, 10, 5, 4, 6, 8, 8, 8, 5, 10, 7, 5, 7, 8, 9, 10, 9, 5, 7, 7))
