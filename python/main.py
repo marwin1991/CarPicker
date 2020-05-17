@@ -73,6 +73,21 @@ def merge_dicts(car_dicts):
     return result_car_dict
 
 
+def create_result_dict(cars_sorted_dict):
+    cars_ammount = 0
+    for k, v in cars_sorted_dict.items():
+        cars_ammount += v
+    print(cars_ammount)
+    result_dict = {}
+    for k, v in cars_sorted_dict.items():
+        if v/cars_ammount > 0.05:
+            result_dict[k] = str(int(100* v/cars_ammount)) + "%"
+        else:
+            return result_dict
+    return result_dict
+
+
+
 def main(engine_power, fuel_consumption, acceleration, max_speed, durability,
          space_front, space_back, trunk, comfort,
          quality_finish, quality_mute, ease_of_use,
@@ -116,8 +131,9 @@ def main(engine_power, fuel_consumption, acceleration, max_speed, durability,
     print(predicted_cars)
     print(recommended_cars_by_historical_data)
     predicted_cars.update(recommended_cars_by_historical_data)
-    return dict(sorted(predicted_cars.items(), key=lambda item: item[1], reverse=True))
+    cars_sorted_dict = dict(sorted(predicted_cars.items(), key=lambda item: item[1], reverse=True))
+    return create_result_dict(cars_sorted_dict)
 
 
 if __name__ == '__main__':
-    print(main(10, 7, 9, 10, 5, 4, 6, 8, 8, 8, 5, 10, 7, 5, 7, 8, 9, 10, 9, 5, 7, 7))
+    print(main(1, 7, 4, 7, 5, 4, 6, 4, 5, 3, 5, 10, 7, 5, 7, 8, 9, 10, 3, 3, 2, 2))
