@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.edu.agh.carpicker.model.Input;
 import pl.edu.agh.carpicker.service.CarPickerService;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 @Getter
 @Setter
 @Controller
@@ -38,7 +34,7 @@ public class MainController {
     @PostMapping("/calculate")
     public String route(Model model, @ModelAttribute("input") Input input) {
         this.input = input;
-        model.addAttribute("result", carPickerService.test());
+        model.addAttribute("result", carPickerService.process(input));
         return "index";
     }
 }

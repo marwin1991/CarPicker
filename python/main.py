@@ -5,9 +5,10 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 
-from python.generator import generate_engine, generate_car_body, generate_costs, generate_car_details, \
+from generator import generate_engine, generate_car_body, generate_costs, generate_car_details, \
     generate_equipment, generate_driving_features, get_cars
-from python.historical_data import get_all_similar_predictions
+
+from historical_data import get_all_similar_predictions
 
 from sklearn.linear_model import LogisticRegression
 
