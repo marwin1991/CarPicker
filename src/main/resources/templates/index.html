@@ -331,6 +331,10 @@
             <button type="submit" id="submitButton">Find!</button>
         </form>
 
+        <h6 th:if="${result != null}">
+            <span th:text="'Resul: ' + ${result}"></span>
+        </h6>
+
         <!--<h2>-->
             <!--<span th:text="'Result ' + ${result}"></span>-->
         <!--</h2>-->
