@@ -332,7 +332,35 @@
         </form>
 
         <h6 th:if="${result != null}">
-            <span th:text="'Resul: ' + ${result}"></span>
+            <form action="#" th:action="@{'/rate'}" th:method="POST" th:object="${rate}">
+
+
+                <div class="form-group row" th:each="car,iter : ${result.cars}" >
+                    <label class="col-sm-4 col-form-label"><span th:text="'Name: ' + ${car.getName()} + ' -- accurate: ' + ${car.getRate()}" ></span></label>
+                    <label class="col-sm-2 col-form-label">Rate proposition: </label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" th:id="'rateA' + ${iter.index}" value="1" th:field="${rate.rates[__${iter.index}__]}">
+                        <label class="form-check-label"  >1</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" th:id="'rateB' + ${iter.index}" value="2" th:field="${rate.rates[__${iter.index}__]}">
+                        <label class="form-check-label" >2</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" th:id="'rateC' + ${iter.index}" value="3" th:field="${rate.rates[__${iter.index}__]}">
+                        <label class="form-check-label" >3</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" th:id="'rateD' + ${iter.index}" value="4" th:field="${rate.rates[__${iter.index}__]}">
+                        <label class="form-check-label" >4</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" th:id="'rateE' + ${iter.index}" value="5" th:field="${rate.rates[__${iter.index}__]}">
+                        <label class="form-check-label" >5</label>
+                    </div>
+                </div>
+                <button type="submit" id="submitButton2">Save your rates</button>
+            </form>
         </h6>
 
         <!--<h2>-->
