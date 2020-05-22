@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.edu.agh.carpicker.model.Input;
 import pl.edu.agh.carpicker.model.Rate;
 import pl.edu.agh.carpicker.model.Result;
+import pl.edu.agh.carpicker.repository.CarRateRepository;
 import pl.edu.agh.carpicker.service.CarPickerService;
 
 import java.util.LinkedList;
@@ -26,13 +27,14 @@ public class MainController {
 
     private Result result;
 
-
-
     private CarPickerService carPickerService;
 
+    private CarRateRepository carRateRepository;
+
     @Autowired
-    public MainController(CarPickerService carPickerService) {
+    public MainController(CarPickerService carPickerService, CarRateRepository carRateRepository) {
         this.carPickerService = carPickerService;
+        this.carRateRepository = carRateRepository;
     }
 
     @GetMapping("/")
@@ -58,6 +60,7 @@ public class MainController {
     @PostMapping("/rate")
     public String rate(Model model, @ModelAttribute("rate") Rate rate) {
         //save to db
+        carRateRepository.saveRates(this.result, rate);
         return "index";
     }
 }
