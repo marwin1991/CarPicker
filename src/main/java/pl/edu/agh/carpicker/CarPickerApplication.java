@@ -34,7 +34,8 @@ public class CarPickerApplication {
                 "car_details real, " +
                 "equipment real, " +
                 "driving_features real," +
-                "car text, grade real)");
+                "car text, " +
+                "grade real)");
 
         //jdbcTemplate.update("INSERT INTO car_rates VALUES (current_timestamp,51,71,61,81,41,31,'Audi A4', 5)");
         return dataSource;

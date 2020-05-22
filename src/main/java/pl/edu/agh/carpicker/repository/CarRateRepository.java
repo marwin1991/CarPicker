@@ -25,8 +25,17 @@ public class CarRateRepository {
     }
 
     public void saveRates(Result result, Rate rate){
+        if(rate == null)
+            return;
+
+        if(rate.getRates() == null)
+            return;
+
+        if(rate.getRates().size() != result.getCars().size())
+            return;
+
         for(int i = 0; i < result.getCars().size(); i++){
-            String query = "INSERT INTO car_picker VALUES (current_timestamp, :engine, car_body, " +
+            String query = "INSERT INTO car_rates VALUES (current_timestamp, :engine, :car_body, " +
                     ":cost, :car_details , :equipment, :driving_features, :car_name, :rate)";
 
             MapSqlParameterSource sqlParameterSource = new MapSqlParameterSource()

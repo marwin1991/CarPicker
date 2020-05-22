@@ -118,7 +118,9 @@ public class Input {
     }
 
     public int getAdditionalCosts() {
-        return additionalCosts.divide(price).intValue() * 10;
+        if(price != null && !price.equals(BigDecimal.ZERO))
+            return additionalCosts.divide(price).intValue() * 10;
+        return 0;
     }
 
     public int getDrivingExpQuality() {
