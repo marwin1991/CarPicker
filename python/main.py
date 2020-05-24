@@ -4,6 +4,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
+import argparse
 
 from generator import generate_engine, generate_car_body, generate_costs, generate_car_details, \
     generate_equipment, generate_driving_features, get_cars
@@ -81,26 +82,47 @@ def create_result_list(cars_sorted_dict):
     print(cars_ammount)
     result_list = []
     for k, v in cars_sorted_dict.items():
-        if v/cars_ammount > 0.05:
-            result_list.append({"name" : k, "rate" : str(int(100* v/cars_ammount)) + "%"})
+        if v / cars_ammount > 0.05:
+            result_list.append({"name": k, "rate": str(int(100 * v / cars_ammount)) + "%"})
         else:
             return result_list
     return result_list
 
 
+def main():
+    parser = argparse.ArgumentParser(description='Elements of car')
+    parser.add_argument('engine_power', type=int)
+    parser.add_argument('fuel_consumption', type=int)
+    parser.add_argument('acceleration', type=int)
+    parser.add_argument('max_speed', type=int)
+    parser.add_argument('durability', type=int)
+    parser.add_argument('space_front', type=int)
+    parser.add_argument('space_back', type=int)
+    parser.add_argument('trunk', type=int)
+    parser.add_argument('comfort', type=int)
+    parser.add_argument('quality_finish', type=int)
+    parser.add_argument('quality_mute', type=int)
+    parser.add_argument('ease_of_use', type=int)
+    parser.add_argument('comfort_equipment', type=int)
+    parser.add_argument('security_equipment', type=int)
+    parser.add_argument('extra_equipment', type=int)
+    parser.add_argument('price', type=int)
+    parser.add_argument('price_loss', type=int)
+    parser.add_argument('extra_costs', type=int)
+    parser.add_argument('driving', type=int)
+    parser.add_argument('breaking', type=int)
+    parser.add_argument('driving_modes', type=int)
+    parser.add_argument('gearbox', type=int)
 
-def main(engine_power, fuel_consumption, acceleration, max_speed, durability,
-         space_front, space_back, trunk, comfort,
-         quality_finish, quality_mute, ease_of_use,
-         comfort_equipment, security_equipment, extra_equipment,
-         price, price_loss, extra_costs,
-         driving, breaking, driving_modes, gearbox):
-    arguments = {"engine": [engine_power, fuel_consumption, acceleration, max_speed, durability],
-                 "car_body": [space_front, space_back, trunk, comfort],
-                 "costs": [price, price_loss, extra_costs],
-                 "car_details": [quality_finish, quality_mute, ease_of_use],
-                 "equipment": [comfort_equipment, security_equipment, extra_equipment],
-                 "driving_features": [driving, breaking, driving_modes, gearbox]}
+    args = parser.parse_args()
+
+    arguments = {
+        "engine": [args.engine_power, args.fuel_consumption, args.acceleration, args.max_speed, args.durability],
+        "car_body": [args.space_front, args.space_back, args.trunk, args.comfort],
+        "costs": [args.price, args.price_loss, args.extra_costs],
+        "car_details": [args.quality_finish, args.quality_mute, args.ease_of_use],
+        "equipment": [args.comfort_equipment, args.security_equipment, args.extra_equipment],
+        "driving_features": [args.driving, args.breaking, args.driving_modes, args.gearbox]}
     training_data = generate_training_datasets()
     predicted_engine = predict(arguments.get("engine"), training_data[0])
     predicted_car_body = predict(arguments.get("car_body"), training_data[1])
@@ -134,8 +156,8 @@ def main(engine_power, fuel_consumption, acceleration, max_speed, durability,
     predicted_cars.update(recommended_cars_by_historical_data)
     cars_sorted_dict = dict(sorted(predicted_cars.items(), key=lambda item: item[1], reverse=True))
     result_list = create_result_list(cars_sorted_dict)
-    return {"cars" : result_list, "features" : observation}
+    return {"cars": result_list, "features": observation}
 
 
 if __name__ == '__main__':
-    print(main(1, 7, 4, 7, 5, 4, 6, 4, 5, 3, 5, 10, 7, 5, 7, 8, 9, 10, 3, 3, 2, 2))
+    print(main(2, 8, 4, 9, 5, 4, 6, 4, 5, 3, 5, 10, 7, 5, 7, 8, 9, 10, 3, 3, 2, 8))
