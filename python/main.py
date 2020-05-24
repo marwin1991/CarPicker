@@ -87,6 +87,9 @@ def create_result_list(cars_sorted_dict):
     return result_list
 
 
+training_data = generate_training_datasets()
+
+
 def main():
     parser = argparse.ArgumentParser(description='Elements of car')
     parser.add_argument('engine_power', type=int)
@@ -121,7 +124,6 @@ def main():
         "car_details": [args.quality_finish, args.quality_mute, args.ease_of_use],
         "equipment": [args.comfort_equipment, args.security_equipment, args.extra_equipment],
         "driving_features": [args.driving, args.breaking, args.driving_modes, args.gearbox]}
-    training_data = generate_training_datasets()
     predicted_engine = predict(arguments.get("engine"), training_data[0])
     predicted_car_body = predict(arguments.get("car_body"), training_data[1])
     predicted_costs = predict(arguments.get("costs"), training_data[2])
