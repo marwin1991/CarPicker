@@ -34,12 +34,10 @@ def predict(arguments, training_data):
     for data in training_data:
         X_train.append(data[:-1])
         y_train.append(data[-1])
-    model1 = LogisticRegression(random_state=1)
-    model2 = DecisionTreeClassifier(random_state=1)
-    model = VotingClassifier(estimators=[('lr', model1), ('dt', model2)], voting='hard')
+    model = KNeighborsClassifier(5)
     print(X_train)
     print(y_train)
-    X_train = preprocessing.normalize(X_train)
+    #X_train = preprocessing.normalize(X_train)
     model.fit(X_train, y_train)
     return model.predict([arguments])
 
@@ -160,4 +158,5 @@ def main():
 
 
 if __name__ == '__main__':
-    print(main(2, 8, 4, 9, 5, 4, 6, 4, 5, 3, 5, 10, 7, 5, 7, 8, 9, 10, 3, 3, 2, 8))
+    training_data = generate_training_datasets()
+    print(predict([10, 8, 9, 9, 7], training_data[0]))
