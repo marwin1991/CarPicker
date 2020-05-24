@@ -50,7 +50,9 @@ public class Input {
     }
 
     public int getFuelUsage() {
-        return (int) (fuelUsage * 10 / 25);
+        int f = (int) (fuelUsage * 10 / 25);
+        return Math.min(f, 10);
+
     }
 
     public int getAcceleration() {
@@ -118,7 +120,11 @@ public class Input {
     }
 
     public int getAdditionalCosts() {
-        return additionalCosts.divide(price).intValue() * 10;
+        try {
+            return additionalCosts.divide(price).intValue() * 10;
+        } catch (Exception e){
+            return 0;
+        }
     }
 
     public int getDrivingExpQuality() {

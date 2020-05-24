@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.edu.agh.carpicker.model.Input;
 import pl.edu.agh.carpicker.model.Rate;
 import pl.edu.agh.carpicker.model.Result;
+import pl.edu.agh.carpicker.repository.CarRateRepository;
 import pl.edu.agh.carpicker.service.CarPickerService;
 
 import java.util.LinkedList;
@@ -22,22 +23,25 @@ import java.util.LinkedList;
 @Controller
 public class MainController {
 
-    private Input input;
+    private Input input = new Input();
 
     private Result result;
 
-
-
     private CarPickerService carPickerService;
 
+    private CarRateRepository carRateRepository;
+
     @Autowired
-    public MainController(CarPickerService carPickerService) {
+    public MainController(CarPickerService carPickerService, CarRateRepository carRateRepository) {
         this.carPickerService = carPickerService;
+        this.carRateRepository = carRateRepository;
     }
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("input", new Input());
+        this.input = new Input();
+        this.result = null;
+        prepareModel(model);
         return "index";
     }
 
@@ -45,19 +49,26 @@ public class MainController {
     public String route(Model model, @ModelAttribute("input") Input input) throws JsonProcessingException {
         this.input = input;
         this.result = carPickerService.process(input);
-        model.addAttribute("result", this.result);
 
         Rate rate = new Rate();
         LinkedList<Integer> r = new LinkedList<>();
         this.result.getCars().forEach(c -> r.add(0));
         rate.setRates(r);
         model.addAttribute("rate", rate);
+
+        prepareModel(model);
         return "index";
     }
 
     @PostMapping("/rate")
     public String rate(Model model, @ModelAttribute("rate") Rate rate) {
-        //save to db
-        return "index";
+        carRateRepository.saveRates(this.result, rate);
+        prepareModel(model);
+        return "thanks";
+    }
+
+    private void prepareModel(Model model){
+        model.addAttribute("input", this.input);
+        model.addAttribute("result", this.result);
     }
 }
