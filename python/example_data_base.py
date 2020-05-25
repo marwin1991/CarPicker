@@ -1,6 +1,7 @@
 import sqlite3
 
 def get_historical_data():
+    return []
     conn = sqlite3.connect('car_rates.db')
 
     c = conn.cursor()

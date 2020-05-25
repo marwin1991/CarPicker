@@ -160,5 +160,4 @@ def main():
 
 
 if __name__ == '__main__':
-    training_data = generate_training_datasets()
-    print(predict([10, 8, 9, 9, 7], training_data[0]))
+    print(main())
