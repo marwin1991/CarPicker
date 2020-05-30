@@ -57,28 +57,28 @@ public class CarPickerService {
     }
 
     private String getArgs(Input input){
-        return input.getEnginePower() + " " +
-                input.getFuelUsage() + " " +
-                input.getAcceleration() + " " +
-                input.getMaxSpeed() + " " +
-                input.getEngineReliability() + " " +
-                input.getCarFrontSpace() + " " +
-                input.getCarBackSpace() + " " +
-                input.getTrunkSpace() + " " +
-                input.getComfort() + " " +
-                input.getFinishQuality() + " " +
-                input.getMuteQuality() + " " +
-                input.getEaseOfUse() + " " +
-                input.getComfortAdditionalEquipment() + " " +
-                input.getSafetyAdditionalEquipment() + " " +
-                input.getOtherAdditionalEquipment() + " " +
-                input.getPrice() + " " +
-                input.getPriceDef() + " " +
-                input.getAdditionalCosts() + " " +
-                input.getDrivingExpQuality() + " " +
-                input.getBreaksQuality() + " " +
-                input.getDrivingModes() + " " +
-                input.getTransmission();
+        return input.getEXTEnginePower() + " " +
+                input.getEXTFuelUsage() + " " +
+                input.getEXTAcceleration() + " " +
+                input.getEXTMaxSpeed() + " " +
+                input.getEXTEngineReliability() + " " +
+                input.getEXTCarFrontSpace() + " " +
+                input.getEXTCarBackSpace() + " " +
+                input.getEXTTrunkSpace() + " " +
+                input.getEXTComfort() + " " +
+                input.getEXTFinishQuality() + " " +
+                input.getEXTMuteQuality() + " " +
+                input.getEXTEaseOfUse() + " " +
+                input.getEXTComfortAdditionalEquipment() + " " +
+                input.getEXTSafetyAdditionalEquipment() + " " +
+                input.getEXTOtherAdditionalEquipment() + " " +
+                input.getEXTPrice() + " " +
+                input.getEXTPriceDef() + " " +
+                input.getEXTAdditionalCosts() + " " +
+                input.getEXTDrivingExpQuality() + " " +
+                input.getEXTBreaksQuality() + " " +
+                input.getEXTDrivingModes() + " " +
+                input.getEXTTransmission();
 
     }
 

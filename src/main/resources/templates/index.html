@@ -156,14 +156,32 @@
 
             <div class="form-group">
                 <label for="comfort">Comfort [Don't care - Normal - Luxury]</label>
-                <input type="range" class="custom-range" value="5" min="0" max="10" step="1" id="comfort" name="comfort" th:value="*{comfort}">
+                <input type="range" class="custom-range" value="5" min="0" max="10" step="1" id="comfort" name="comfort"
+                       th:value="*{comfort}">
             </div>
 
+            <div class="form-group">
+                <label for="comfort">Finish Quality [Don't care - Normal - Luxury]</label>
+                <input class="custom-range" id="finishQuality" max="10" min="0" name="finishQuality" step="1"
+                       th:value="*{finishQuality}" type="range" value="5">
+            </div>
+            <div class="form-group">
+                <label for="comfort">Inside Mute Quality [Low - Normal - Super quiet]</label>
+                <input class="custom-range" id="muteQuality" max="10" min="0" name="muteQuality" step="1"
+                       th:value="*{muteQuality}" type="range" value="5">
+            </div>
+            <div class="form-group">
+                <label for="comfort">Easy of Use [Really easy - Normal - Needs of some knowledge]</label>
+                <input class="custom-range" id="easeOfUse" max="10" min="0" name="easeOfUse" step="1"
+                       th:value="*{easeOfUse}" type="range" value="5">
+            </div>
 
             <div class="form-group row">
-                <label for="comfortAdditionalEquipment" class="col-sm-3 col-form-label">Comfort additional equipment: </label>
+                <label for="comfortAdditionalEquipment" class="col-sm-3 col-form-label">Comfort additional
+                    equipment: </label>
                 <div class="col-sm-9">
-                    <select class="form-control" id="comfortAdditionalEquipment" name="comfortAdditionalEquipment" th:value="*{comfortAdditionalEquipment}">
+                    <select class="form-control" id="comfortAdditionalEquipment" name="comfortAdditionalEquipment"
+                            th:value="*{comfortAdditionalEquipment}">
                         <option value="1">None</option>
                         <option value="3">Small</option>
                         <option value="5" selected>Standard</option>
@@ -312,13 +330,27 @@
                     <label class="form-check-label" for="breaksQualityRadio9">9</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="breaksQualityRadio10" value="10" th:field="*{breaksQuality}">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="breaksQualityRadio10"
+                           value="10" th:field="*{breaksQuality}">
                     <label class="form-check-label" for="breaksQualityRadio10">10</label>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="transmission" class="col-sm-3 col-form-label">Transmission: </label>
+                <label class="col-sm-3 col-form-label" for="drivingModes">Driving Modes: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="drivingModes" name="drivingModes" th:value="*{drivingModes}">
+                        <option value="1">Basic</option>
+                        <option value="3">Basic Plus</option>
+                        <option selected value="5">Standard</option>
+                        <option selected value="5">Standard Plus</option>
+                        <option value="10">All available</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="transmission">Transmission: </label>
                 <div class="col-sm-9">
                     <select class="form-control" id="transmission" name="transmission" th:value="*{transmission}">
                         <option value="1">Manual</option>
