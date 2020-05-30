@@ -22,7 +22,7 @@ public class Input {
 
     private int carFrontSpace = 5; //1-10
     private int carBackSpace = 5;// 1-10
-    private int trunkSpace = 200; // l
+    private int trunkSpace = 350; // l
     private int comfort = 5; // in scale from 1 to 10
 
     private int finishQuality = 5;
