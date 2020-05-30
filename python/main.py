@@ -2,7 +2,7 @@ import argparse
 
 from generator import generate_engine, generate_car_body, generate_costs, generate_car_details, \
     generate_equipment, generate_driving_features, get_cars
-from historical_data import get_all_similar_predictions, get_recommendation
+from historical_data import get_recommendation
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
@@ -113,16 +113,18 @@ def get_prediction(arguments):
         predicted_cars_dicts.append(get_cars_predicted_by_classifier(classifier, observation, training_data))
 
     predicted_cars = dict(merge_dicts(predicted_cars_dicts))
-    print("pc", predicted_cars)
 
-    recommended_cars = get_recommendation(predicted_cars)
-    print("rc", recommended_cars)
+    cars_with_recommendation = get_recommendation(predicted_cars, observation)
+
+    # recommended_cars = get_recommendation(predicted_cars)
+    # print("rc", recommended_cars)
 
     # recommended_cars_by_historical_data = dict(get_all_similar_predictions(observation))
     # print(predicted_cars)
     # print("rh", recommended_cars_by_historical_data)
     # predicted_cars.update(recommended_cars_by_historical_data)
-    cars_sorted_dict = dict(sorted(predicted_cars.items(), key=lambda item: item[1], reverse=True))
+
+    cars_sorted_dict = dict(sorted(cars_with_recommendation.items(), key=lambda item: item[1], reverse=True))
     result_list = create_result_list(cars_sorted_dict)
     return {"cars": result_list, "features": observation}
 
