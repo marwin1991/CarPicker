@@ -12,6 +12,13 @@ records_similarities = [(6, 0), (5, 1), (5, 0), (4, 2), (4, 1), (4, 0), (3, 3), 
 # (strong similar features count, small similar features count, similarity wage)
 records_similarities_with_wages = []
 
+STRONG_SIM_MULTIPLIER = 3
+MEDIUM_SIM_MULTIPLIER = 2
+SMALL_SIM_MULTIPLIER = 1
+
+# grade: prediction_modifier
+grade_modifiers = {5: 0.5, 4: 0.25, 3: 0.0, 2: -0.25, 1: -0.5}
+
 
 def are_strong_similar_values(value1, value2):
     return abs(value1 - value2) <= STRONG_SIMILARITY_DIFFERENCE
@@ -121,15 +128,15 @@ def get_best_match(data, car):
     return result
 
 
-def calculate_sum_based_on_wage(grade, wage):
-    multiplier = 1
+def calculate_grade_with_mul(grade, wage):
+    multiplier = SMALL_SIM_MULTIPLIER
 
     if wage > 0.67:
-        multiplier = 3
+        multiplier = STRONG_SIM_MULTIPLIER
     elif wage > 0.34:
-        multiplier = 2
+        multiplier = MEDIUM_SIM_MULTIPLIER
 
-    base_grade = grade - 3.0
+    base_grade = grade_modifiers[grade]
     return multiplier * base_grade
 
 
@@ -142,7 +149,7 @@ def calculate_grades(similar_records):
         if car_name in result:
             current_sum = result[car_name]
 
-        current_sum += calculate_sum_based_on_wage(grade, wage)
+        current_sum += calculate_grade_with_mul(grade, wage)
 
         result[car_name] = current_sum
 
@@ -174,9 +181,11 @@ def calculate_car_modifiers(modifiers_per_car):
 def get_recommendation(predicted_cars, predicted_features):
     similar_records = get_all_similar_records(predicted_features)
     print("pred_car:", predicted_cars)
+    print("pred_feat:", predicted_features)
     modifiers_per_car = calculate_grades(similar_records)
 
-    recommendation_modifiers = calculate_car_modifiers(modifiers_per_car)
+    # recommendation_modifiers = calculate_car_modifiers(modifiers_per_car)
+    recommendation_modifiers = modifiers_per_car
     print(recommendation_modifiers)
 
     result = {}
@@ -184,13 +193,18 @@ def get_recommendation(predicted_cars, predicted_features):
     if len(recommendation_modifiers) == 0:
         return predicted_cars
 
-    base_value = 100 / len(recommendation_modifiers)
     for k, v in recommendation_modifiers.items():
         if k in predicted_cars.keys():
-            result[k] = (1.0 + v) * predicted_cars[k]
+            s = predicted_cars[k] + v
+            result[k] = s if s > 0.0 else 0.0
         elif v > 0:
-            result[k] = (1.0 + v) * base_value
+            result[k] = v
 
+    for k, v in predicted_cars.items():
+        if k not in result.keys():
+            result[k] = v
+
+    print("after_recommendation:", result)
     return result
 
     # data = get_data_frames()
