@@ -34,13 +34,13 @@ def convert_to_db_format(predictions):
 
 
 def get_rate(predict_rate):
-    if predict_rate > 0.3:
+    if predict_rate > 0.39:
         return 5.0
-    elif predict_rate > 0.25:
+    elif predict_rate > 0.29:
         return 4.0
-    elif predict_rate > 0.17:
+    elif predict_rate > 0.19:
         return 3.0
-    elif predict_rate > 0.1:
+    elif predict_rate > 0.09:
         return 2.0
     else:
         return 1.0

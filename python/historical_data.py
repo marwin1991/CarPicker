@@ -55,7 +55,7 @@ def get_all_similar_records(predicted_features):
         if strong_similarity + small_similarity >= 4:
             result.append(prepare_record(historical_row[-2], historical_row[-1], strong_similarity, small_similarity))
 
-    return result
+    return result, len(historical_data)
 
 
 def get_data_frames():
@@ -156,30 +156,8 @@ def calculate_grades(similar_records):
     return result
 
 
-def calculate_car_modifiers(modifiers_per_car):
-    pos_val = 0
-    neg_val = 0
-    for v in modifiers_per_car.values():
-        if v >= 0:
-            pos_val += v
-        else:
-            neg_val += abs(v)
-
-    percents_per_car = {}
-
-    for car, mod in modifiers_per_car.items():
-        if mod > 0:
-            percentage = mod / pos_val
-        else:
-            percentage = mod / neg_val
-
-        percents_per_car[car] = percentage
-
-    return percents_per_car
-
-
 def get_recommendation(predicted_cars, predicted_features):
-    similar_records = get_all_similar_records(predicted_features)
+    similar_records, history_size = get_all_similar_records(predicted_features)
     print("pred_car:", predicted_cars)
     print("pred_feat:", predicted_features)
     modifiers_per_car = calculate_grades(similar_records)
@@ -193,9 +171,12 @@ def get_recommendation(predicted_cars, predicted_features):
     if len(recommendation_modifiers) == 0:
         return predicted_cars
 
+    history_size_param = history_size / 100
+    history_size_param = history_size_param if history_size_param <= 0.7 else 0.7
+
     for k, v in recommendation_modifiers.items():
         if k in predicted_cars.keys():
-            s = predicted_cars[k] + v
+            s = predicted_cars[k] + v * history_size_param
             result[k] = s if s > 0.0 else 0.0
         elif v > 0:
             result[k] = v
